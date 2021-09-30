@@ -11,5 +11,9 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function getEmailDomain(email) {
-  return email.slice(email.indexOf('@') + 1);
+  if (email.split('').filter(x => x === '@').length > 1) {
+    getEmailDomain(email.slice(email.indexOf('@') + 1));
+  } else {
+    return email.slice(email.indexOf('@') + 1);
+  }
 }
